@@ -1,0 +1,60 @@
+name: build_portable
+
+on:
+  [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+
+          - os: ubuntu-20.04
+            qt_version: 5.12.8
+            qt_host: linux
+
+          - os: ubuntu-20.04
+            qt_version: 5.15.2
+            qt_host: linux
+            app_image: True
+
+          - os: windows-2022
+            qt_version: 5.15.2
+            qt_host: windows
+            qt_arch: win64_mingw81
+
+          - os: macos-11
+            qt_version: 5.12.12
+            qt_host: mac
+            macosx_deployment_target: 10.12
+
+    runs-on: ${{ matrix.os }}
+
+    env:
+      MACOSX_DEPLOYMENT_TARGET: ${{ matrix.macosx_deployment_target }}
+      INSTALL_DIR: "install"
+      BUILD_DIR: "build"
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Install OpenJDK
+        uses: AdoptOpenJDK/install-jdk@v1
+        with:
+          version: '8'
+
+      - name: Install OpenJDK
+        uses: AdoptOpenJDK/install-jdk@v1
+        with:
+          version: '17'
+
+      - name: Echo dirs
+        shell: bash
+        run: |
+          set -x
+          ls -alhR
