@@ -53,8 +53,14 @@ jobs:
         with:
           version: '17'
 
-      - name: Echo dirs
+      - name: Echo jdk8
         shell: bash
         run: |
           set -x
-          ls -alhR
+          ls -alhR /opt/hostedtoolcache/jdk-8-hotspot/1.0.0/x64
+
+      - name: Echo jdk17
+        shell: bash
+        run: |
+          set -x
+          ls -alhR /opt/hostedtoolcache/jdk-17-hotspot/1.0.0/x64
