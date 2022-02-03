@@ -43,62 +43,24 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Install OpenJDK
-        uses: AdoptOpenJDK/install-jdk@v1
-        with:
-          version: '8'
+      - name: Install System OpenJDK 8
+        run: |
+          sudo apt-get install -y openjdk-8-jdk
+          sudo apt-get install -y openjdk-8-jre
 
-      - name: Install OpenJDK
-        uses: AdoptOpenJDK/install-jdk@v1
-        with:
-          version: '17'
+      - name: Install System OpenJDK 17
+        run: |
+          sudo apt-get install -y openjdk-17-jdk
+          sudo apt-get install -y openjdk-17-jre
 
-      - name: Echo jdk8
+      - name: Show jvm directories
+        shell: bash
+        run: |
+          set +x
+          ls -alhR /usr/lib/jvm
+
+      - name: Show alternatives
         shell: bash
         run: |
           set -x
-          ls -alhR /opt/hostedtoolcache/jdk-8-hotspot/1.0.0/x64
-
-      - name: Echo jdk17
-        shell: bash
-        run: |
-          set -x
-          ls -alhR /opt/hostedtoolcache/jdk-17-hotspot/1.0.0/x64
-
-      - name: Copy jdk8
-        shell: bash
-        run: |
-          set -x
-          mkdir jdk8
-          cp -r /opt/hostedtoolcache/jdk-8-hotspot/1.0.0/x64/{bin,include,jre,lib} jdk8
-
-      - name: Copy jdk17
-        shell: bash
-        run: |
-          set -x
-          mkdir jdk17
-          cp -r /opt/hostedtoolcache/jdk-17-hotspot/1.0.0/x64/{bin,include,conf,lib} jdk17
-
-      - name: Echo copied jdk8
-        shell: bash
-        run: |
-          set -x
-          ls -alhR jdk8
-
-      - name: Echo copied jdk17
-        shell: bash
-        run: |
-          set -x
-          ls -alhR jdk17
-
-      - name: Test if
-        if: matrix.app_image == true
-        run: |
-          set -x
-          echo "It's True!"
-
-      - name: Test not if
-        if: matrix.app_image != true
-        run: |
-          set -x
-          echo "It's Not true!"
+          update-java-alternatives --list
