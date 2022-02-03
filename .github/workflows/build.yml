@@ -17,7 +17,7 @@ jobs:
           - os: ubuntu-20.04
             qt_version: 5.15.2
             qt_host: linux
-            app_image: True
+            app_image: true
 
           - os: windows-2022
             qt_version: 5.15.2
@@ -92,13 +92,13 @@ jobs:
           ls -alhR jdk17
 
       - name: Test if
-        if: matrix.app_image == True
+        if: matrix.app_image == true
         run: |
           set -x
           echo "It's True!"
 
       - name: Test not if
-        if: matrix.app_image != True
+        if: matrix.app_image != true
         run: |
           set -x
           echo "It's Not true!"
