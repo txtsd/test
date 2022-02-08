@@ -47,5 +47,5 @@ jobs:
       #     sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
 
       - name: Find
-        run: |
-          where /r D:\ *mingw32*
+        if: runner.os == 'Windows'
+        run: where /r D:\ "*mingw32*"
