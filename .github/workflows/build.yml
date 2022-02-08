@@ -51,14 +51,13 @@ jobs:
       #   with:
       #     platform: x86
 
-      # - name: Find
-      #   if: runner.os == 'Windows'
-      #   run: |
-      #     Get-Childitem –Path D:\ -Include *mingw* -File -Recurse -ErrorAction SilentlyContinue
-      #     Get-Childitem –Path C:\ProgramData\chocolatey\lib\mingw\ -Include *mingw* -File -Recurse -ErrorAction SilentlyContinue
-
       - name: Find
         if: runner.os == 'Windows'
-        shell: bash
         run: |
-          ls -alhR C:/Strawberry
+          Get-Childitem –Path C:\Strawberry -Include *i686* -File -Recurse -ErrorAction SilentlyContinue
+
+      # - name: Find
+      #   if: runner.os == 'Windows'
+      #   shell: bash
+      #   run: |
+      #     ls -alhR C:/Strawberry
