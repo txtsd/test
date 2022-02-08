@@ -61,4 +61,4 @@ jobs:
         if: runner.os == 'Windows'
         shell: bash
         run: |
-          tree C:/Strawberry
+          ls -alhR C:/Strawberry
