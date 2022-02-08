@@ -17,10 +17,10 @@ jobs:
 
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          submodules: 'true'
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      #   with:
+      #     submodules: 'true'
 
       # - name: Install System OpenJDK 8
       #   run: |
@@ -48,4 +48,4 @@ jobs:
 
       - name: Find
         if: runner.os == 'Windows'
-        run: where /r D:\ "*mingw32*"
+        run: where /r D:\ "i686*"
