@@ -54,7 +54,7 @@ jobs:
       - name: Install Strawberry
         if: runner.os == 'Windows'
         run: |
-          choco install strawberryperl -y --force
+          choco install strawberryperl -y --force --x86
 
       - name: Find
         if: runner.os == 'Windows'
