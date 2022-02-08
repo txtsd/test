@@ -48,5 +48,4 @@ jobs:
 
       - name: Find
         if: runner.os == 'Windows'
-        shell: bash
-        run: find / -name "*mingw*"
+        run: Get-Childitem –Path D:\ -Include *mingw* -File -Recurse -ErrorAction SilentlyContinue
