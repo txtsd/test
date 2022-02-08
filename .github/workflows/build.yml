@@ -48,4 +48,5 @@ jobs:
 
       - name: Find
         if: runner.os == 'Windows'
-        run: where /r D:\ "i686*"
+        shell: bash
+        run: find / -name "*mingw*"
