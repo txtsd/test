@@ -46,13 +46,13 @@ jobs:
       #     # update-java-alternatives --list
       #     sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
 
-      - name: Set up MinGW
-        uses: egor-tensin/setup-mingw@v2
-        with:
-          platform: x86
+      # - name: Set up MinGW
+      #   uses: egor-tensin/setup-mingw@v2
+      #   with:
+      #     platform: x86
 
       - name: Find
         if: runner.os == 'Windows'
         run: |
           Get-Childitem –Path D:\ -Include *mingw* -File -Recurse -ErrorAction SilentlyContinue
-          Get-Childitem –Path C:\ -Include *mingw* -File -Recurse -ErrorAction SilentlyContinue
+          Get-Childitem –Path C:\ProgramData\chocolatey\lib\mingw\ -Include *mingw* -File -Recurse -ErrorAction SilentlyContinue
