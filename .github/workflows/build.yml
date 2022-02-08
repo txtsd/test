@@ -8,9 +8,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-          # - os: ubuntu-20.04
+          - os: ubuntu-20.04
           - os: windows-2022
-          # - os: macos-11
+          - os: macos-11
 
     runs-on: ${{ matrix.os }}
 
